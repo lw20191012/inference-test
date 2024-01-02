@@ -1,0 +1,1 @@
+这个项目是对比pytorch和ort部署resnet50推理的性能
