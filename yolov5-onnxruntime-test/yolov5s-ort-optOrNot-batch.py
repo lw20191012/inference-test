@@ -28,8 +28,10 @@ unoptimized_times = []
 for _ in range(num_runs):
     # 开启优化的推理
     ort_inputs_optimized = {ort_session_optimized.get_inputs()[0].name: input_data}
+    torch.cuda.synchronize()
     start_time_optimized = time.time()
     outputs_optimized = ort_session_optimized.run(None, ort_inputs_optimized)
+    torch.cuda.synchronize()
     end_time_optimized = time.time()
     optimized_times.append(end_time_optimized - start_time_optimized)
 
